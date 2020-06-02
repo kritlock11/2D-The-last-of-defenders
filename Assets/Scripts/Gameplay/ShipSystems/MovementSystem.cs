@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Gameplay.ShipControllers.CustomControllers;
+using UnityEngine;
 
 namespace Gameplay.ShipSystems
 {
@@ -8,10 +9,12 @@ namespace Gameplay.ShipSystems
         [Range(0, 30)] [SerializeField] private float _longitudinalSpeed;
         [Range(0, 30)] [SerializeField] private float _RandomSpeed;
 
+        Vector3 _moVector = Vector3.zero;
+        private bool flag;
+
         public void LateralMovement(float amount)
         {
             Move(amount * _lateralSpeed, Vector3.right);
-            Dash();
         }
 
         public void LongitudinalMovement(float amount)
@@ -21,9 +24,20 @@ namespace Gameplay.ShipSystems
 
         public void RandomMovement(float amount)
         {
-            var mult = 5;
-            var t = Time.time;
-            Move(amount * _RandomSpeed, new Vector3(Mathf.PerlinNoise(t * mult, 0), 1, 0));
+            if (!flag)
+            {
+                GetNextPosition();
+            }
+            Move(amount * _RandomSpeed, _moVector);
+        }
+
+        private void GetNextPosition()
+        {
+            var vec = transform.position + Random.insideUnitSphere;
+            vec.z = transform.position.z;
+            _moVector = vec;
+            flag = true;
+            Invoke("GetNextPosition", 1f);
         }
 
         private void Move(float amount, Vector3 axis)
@@ -31,19 +45,19 @@ namespace Gameplay.ShipSystems
             transform.Translate(amount * axis.normalized);
         }
 
-        public void Dash()
-        {
-            if (!Input.GetKeyDown(KeyCode.LeftShift)) return;
+        //public void Dash()
+        //{
+        //    if (!Input.GetKeyDown(KeyCode.LeftShift)) return;
 
-            var offset = 10;
-            var distance = 3;
+        //    var offset = 10;
+        //    var distance = 3;
 
-            transform.position = Vector2.MoveTowards(
-                transform.position,
-                Input.GetAxis("Horizontal") < 0 ?
-                    new Vector2(transform.position.x - offset, transform.position.y) :
-                    new Vector2(transform.position.x + offset, transform.position.y),
-                distance);
-        }
+        //    transform.position = Vector2.MoveTowards(
+        //        transform.position,
+        //        Input.GetAxis("Horizontal") < 0 ?
+        //            new Vector2(transform.position.x - offset, transform.position.y) :
+        //            new Vector2(transform.position.x + offset, transform.position.y),
+        //        distance);
+        //}
     }
 }

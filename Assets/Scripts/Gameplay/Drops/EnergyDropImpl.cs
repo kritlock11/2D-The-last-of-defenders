@@ -14,6 +14,7 @@ namespace Assets.Scripts.Gameplay.Drops
 
             if (obj == null) return;
             obj.ApplyEnergy(this);
+            InstTxtAnim(_energy);
             DestroyDrop();
         }
     }

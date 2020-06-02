@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3274570344616576308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.423, y: 2.703, z: 0}
-  m_LocalScale: {x: 5.227687, y: 6.863001, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,8 +51,8 @@ MonoBehaviour:
   _type: 2
   _rocketSpeed: 1
   _rocketMinSpeed: 1
-  _rocketMaxSpeed: 10
-  _acceleration: 20
+  _rocketMaxSpeed: 20
+  _acceleration: 50
 --- !u!212 &3274570344616576305
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0.01999569, a: 1}
   m_FlipX: 0

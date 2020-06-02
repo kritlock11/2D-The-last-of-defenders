@@ -6,6 +6,7 @@ namespace Assets.Scripts.Gameplay.Drops
     public class HealDropImpl : Drop, IHealGiver
     {
         [SerializeField] private float _heal;
+
         public float Heal => _heal;
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Gameplay.Drops
 
             if (obj == null) return;
             obj.ApplyHeal(this);
+            InstTxtAnim(_heal);
             DestroyDrop();
         }
     }

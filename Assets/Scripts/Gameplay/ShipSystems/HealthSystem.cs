@@ -11,7 +11,9 @@ namespace Gameplay.ShipSystems
         [SerializeField] private float _maxEnergy;
         [SerializeField] private float _curHealth;
         [SerializeField] private float _curEnergy;
-        
+
+        private GameObject EffectPrefab;
+
         private ShipController _shipController;
 
         public float CurHealth
@@ -34,8 +36,12 @@ namespace Gameplay.ShipSystems
             }
         }
 
+
+
         public void Init()
         {
+            EffectPrefab = Resources.Load<GameObject>("Effects/DeathEffect");
+
             _shipController = GetComponent<ShipController>();
             CurHealth = _maxHealth;
             CurEnergy = 0;
@@ -43,6 +49,8 @@ namespace Gameplay.ShipSystems
 
         public void Die()
         {
+            Instantiate(EffectPrefab, transform.position, Quaternion.identity);
+
             GetComponent<WeaponSystem>().DestroyProjectilePool(2);
             SpawnedEntities.RemoveShip(GetComponent<ISpaceship>());
             Destroy(gameObject);

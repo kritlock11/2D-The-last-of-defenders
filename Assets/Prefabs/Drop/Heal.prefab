@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.20091248, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71b6ca4f632c654faa2eadf8f6949e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energy: 0
-  _heal: 13
   _lifeTime: 3
   _type: 0
   _dropController: {fileID: 2406057925771396978}
   _movementSystem: {fileID: 1797984037500184185}
+  _heal: 13
+  _hpAnim: {fileID: 276677006890732903, guid: 30a7a5fc136367441a71acb48fc98410, type: 3}
 --- !u!114 &1797984037500184185
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ namespace Gameplay.ShipControllers
                 if (_spaceShip.BattleIdentity == UnitBattleIdentity.Enemy)
                 {
                     _spaceShip.DropSystem.DropBonus();
+
                     _spaceShip.HealthSystem.Die();
                 }
 

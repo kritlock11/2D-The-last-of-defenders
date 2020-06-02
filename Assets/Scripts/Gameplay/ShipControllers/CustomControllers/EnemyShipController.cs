@@ -14,6 +14,8 @@ public class EnemyShipController : ShipController
     
     protected override void ProcessMove(MovementSystem movementSystem)
     {
+        //movementSystem.LateralMovement(Time.deltaTime);
+        //movementSystem.LongitudinalMovement(Time.deltaTime);
         movementSystem.RandomMovement(Time.deltaTime);
     }
 

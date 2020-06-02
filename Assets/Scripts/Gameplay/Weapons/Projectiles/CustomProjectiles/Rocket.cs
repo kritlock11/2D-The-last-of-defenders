@@ -9,6 +9,9 @@ public class Rocket : Projectile
     [SerializeField] private float _rocketMaxSpeed;
     [SerializeField] private float _acceleration;
 
+    private GameObject EffectPrefab;
+
+
     private Vector3 _vector = Vector3.down;
     private bool _detected;
 
@@ -21,10 +24,18 @@ public class Rocket : Projectile
         obj.ApplyDamage(this);
     }
 
+    private void OnEnable() => EffectPrefab = Resources.Load<GameObject>("Effects/RocketExplosion");
+
     private void OnDisable()
     {
         _rocketSpeed = _rocketMinSpeed;
         _detected = false;
+    }
+
+    protected override void SetActiveFalse()
+    {
+        base.SetActiveFalse();
+        Instantiate(EffectPrefab, transform.position, Quaternion.identity);
     }
 
     protected override void Move(float speed)

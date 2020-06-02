@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lateralSpeed: 0
-  _longitudinalSpeed: 2
+  _longitudinalSpeed: 3
   _RandomSpeed: 5.1
 --- !u!114 &590599124999967758
 MonoBehaviour:
