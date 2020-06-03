@@ -30,7 +30,7 @@ namespace Assets.Scripts.Gameplay.Drops
 
         protected virtual void InstTxtAnim(float res)
         {
-            var addedText = Instantiate(_hpAnim, GameObject.Find("Canvas").transform);
+            var addedText = Instantiate(_hpAnim, GameObject.Find("UICanvas").transform);
             addedText.transform.position = transform.position;
             addedText.SetText(res);
             addedText.SetColor(this);

@@ -9,7 +9,12 @@ namespace Gameplay.ShipControllers.CustomControllers
     {
         protected override void ProcessMove(MovementSystem movementSystem)
         {
-            movementSystem.LateralMovement(Input.GetAxis("Horizontal") * Time.deltaTime);
+            var delta = Input.GetAxis("Horizontal");
+            Time.timeScale = delta == 0 ?
+                0.3f :
+                Mathf.Lerp(Time.timeScale, 1, 0.5f);
+
+            movementSystem.LateralMovement(delta * Time.deltaTime);
         }
 
         protected override void ProcessFire(WeaponSystem fireSystem)
